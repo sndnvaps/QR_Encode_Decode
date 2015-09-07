@@ -25,6 +25,9 @@ namespace QR_C_Sharp_Test
         {
             InitQRCombox();
             btnSaveQR.Enabled = false;
+
+            rbOptModNormal.Checked = true; //默认设置为一般模式
+
         }
 
         private void InitQRCombox()
@@ -53,6 +56,17 @@ namespace QR_C_Sharp_Test
                 cbQRVersion.Items.Add(QRVersionCode);
             }
             cbQRVersion.SelectedIndex = 6;
+
+
+            //设置二维码的显示尺寸
+            //从4 - 10
+            //目前只设置7个尺寸
+            for (int j = 4; j <= 10; j++)
+            {
+                string QRSize = j.ToString();
+                cbQRSize.Items.Add(QRSize);
+            }
+            cbQRSize.SelectedIndex = 0; //默认选择为 4
             
         }
         //根据选项，获取当前的压缩格式
@@ -101,12 +115,19 @@ namespace QR_C_Sharp_Test
             return qrversion;
         }
 
+        private int GetQRSize(string QRSizeStr)
+        {
+            int qrsize = 4;
+            qrsize = Convert.ToInt32(QRSizeStr);
+            return qrsize;
+        }
+
         private Bitmap GenerateCode()
         {
             string qrstr = txtQRInput.Text.ToString();
             QRCodeEncoder qrencode = new QRCodeEncoder();
             qrencode.QRCodeEncodeMode = GetEncodeMode(cbEndoeMode.Text.ToString());
-            qrencode.QRCodeScale = 4;
+            qrencode.QRCodeScale = GetQRSize(cbQRSize.Text.ToString());
             qrencode.QRCodeVersion = GetQRVersion(cbQRVersion.Text.ToString());
             qrencode.QRCodeErrorCorrect = GetErrorCorrection(cbErrorCorrection.Text.ToString());
 
@@ -195,6 +216,7 @@ namespace QR_C_Sharp_Test
             }
         }
 
+
         //-------------------------- 解释二维码 --------------------
      
         //选择要进行解析的二维码图片
@@ -253,6 +275,27 @@ namespace QR_C_Sharp_Test
             //string message = string.Format("复制:{0} 到剪贴板成功", Copy2Clipboard);
             Clipboard.SetText(lbQRDecodeOutput.Text);
             MessageBox.Show("复制成功!", "系统提示");
+        }
+
+        private void gbOptModeChoose_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void rbOptModPro_CheckedChanged(object sender, EventArgs e)
+        {
+            cbEndoeMode.Enabled = true;
+            cbErrorCorrection.Enabled = true;
+            cbQRVersion.Enabled = true;
+            cbQRSize.Enabled = true;
+        }
+
+        private void rbOptModNormal_CheckedChanged(object sender, EventArgs e)
+        {
+            cbEndoeMode.Enabled = false;
+            cbErrorCorrection.Enabled = false;
+            cbQRVersion.Enabled = false;
+            cbQRSize.Enabled = false;
         }
 
         

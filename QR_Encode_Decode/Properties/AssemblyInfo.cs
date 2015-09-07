@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("QR_C-Sharp_Test")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("QR_Encode_Decode")]
+[assembly: AssemblyDescription("用于生成和解析二维码")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("QR_C-Sharp_Test")]
+[assembly: AssemblyCompany("sndnvaps")]
+[assembly: AssemblyProduct("QR_Encode_Decode")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

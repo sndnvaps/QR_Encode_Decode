@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QR_C-Sharp_Test", "QR_C-Sharp_Test\QR_C-Sharp_Test.csproj", "{7500C2EB-8563-4D08-BE5D-EB89269A18C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QR_Encode_Decode", "QR_Encode_Decode\QR_Encode_Decode.csproj", "{7500C2EB-8563-4D08-BE5D-EB89269A18C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

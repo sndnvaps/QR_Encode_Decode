@@ -7,8 +7,8 @@
     <ProjectGuid>{7500C2EB-8563-4D08-BE5D-EB89269A18C4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QR_C_Sharp_Test</RootNamespace>
-    <AssemblyName>QR_C-Sharp_Test</AssemblyName>
+    <RootNamespace>QR_Encode_Decode</RootNamespace>
+    <AssemblyName>QR_Encode_Decode</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -76,7 +76,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="ThoughtWorks.QRCode, Version=1.0.4493.37900, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\QRCodeTools\ThoughtWorks.QRCode\bin\Debug\ThoughtWorks.QRCode.dll</HintPath>
+      <HintPath>..\ThoughtWorks.QRCode\ThoughtWorks.QRCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TapControls.resx">
       <DependentUpon>TapControls.cs</DependentUpon>

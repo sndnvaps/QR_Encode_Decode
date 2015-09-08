@@ -23,12 +23,16 @@ namespace QR_C_Sharp_Test
         private object DecodeImage; //用于加载 解析图片
         private object QRImage; //用于保存生成的二维码图片
         QRCodeEncoder QRencode; //二维码生成 
+       // int LogoSize; //定义logo的大小 ，默认大小为 30;
         private void QREncode_Decode_Load(object sender, EventArgs e)
         {
             InitQRCombox();
             btnSaveQR.Enabled = false;
 
             rbOptModNormal.Checked = true; //默认设置为一般模式
+
+            //LogoSize = 30; 
+            txtSizeOfLogo.Text = "30"; //初始大小为30 
 
         }
 
@@ -123,7 +127,12 @@ namespace QR_C_Sharp_Test
             qrsize = Convert.ToInt32(QRSizeStr);
             return qrsize;
         }
-
+        private int GetSizeOfLogo(string QRLogoSize)
+        {
+             int LogoSize = 30;
+            LogoSize = Convert.ToInt32(QRLogoSize);
+            return LogoSize;
+        }
 
         private void GenerateQRCodeBitmap( out object img, QRCodeEncoder qrEncode, string encodeStr, Encoding encode)
         {
@@ -146,7 +155,7 @@ namespace QR_C_Sharp_Test
             }
             catch (IndexOutOfRangeException ioRe)
            {
-               MessageBox.Show(ioRe.Message,"系统提示");
+               MessageBox.Show(ioRe.Message,"请选择高一些的 二维码版本");
                img = new Bitmap(100, 100);
 
             }
@@ -157,19 +166,22 @@ namespace QR_C_Sharp_Test
             }
         }
 
-        private void btnGenerateQR_Click(object sender, EventArgs e)
+        private void WriteLogo2QRBitmap() 
         {
+
+
             //生成二维码，并保存到 object QRImage 当中
-           GenerateQRCodeBitmap(out QRImage, QRencode, txtQRInput.Text.ToString(), Encoding.UTF8);
-            
-          
+            GenerateQRCodeBitmap(out QRImage, QRencode, txtQRInput.Text.ToString(), Encoding.UTF8);
+
+            int logosize = GetSizeOfLogo(txtSizeOfLogo.Text.ToString());
+
             Bitmap QRImg = QRImage as Bitmap; //取出数据，并保存到QRImage 当中
 
             Bitmap ResizeQRImg;
             //当生成的二维码大于图片窗口时， 重新修改二维码的尺寸以适应窗口大小
             if (QRImg.Width > picBox1.Width)
             {
-                ResizeQRImg = new Bitmap(QRImg, picBox1.Width, picBox1.Height); 
+                ResizeQRImg = new Bitmap(QRImg, picBox1.Width, picBox1.Height);
             }
             else
             {
@@ -182,21 +194,27 @@ namespace QR_C_Sharp_Test
             if (logoImage == null)
             {
                 picBox1.Image = ResizeQRImg;
-               
+
             }
             else
             {
                 Bitmap bLogo = logoImage as Bitmap; //获取logo图片对象 
-                bLogo = new Bitmap(bLogo, 30, 30); //改变图片的大小这里我们设置为30      
+                //bLogo = new Bitmap(bLogo, 30, 30); //改变图片的大小这里我们设置为30   
+                bLogo = new Bitmap(bLogo, logosize, logosize);
                 int Y = ResizeQRImg.Height;
                 int X = ResizeQRImg.Width;
                 Point point = new Point(X / 2 - 15, Y / 2 - 15);//logo图片绘制到二维码上，这里将简单计算一下logo所在的坐标 
                 Graphics g = Graphics.FromImage(ResizeQRImg);//创建一个画布           
                 g.DrawImage(bLogo, point);//将logo图片绘制到二维码图片上    
 
-                picBox1.Image = ResizeQRImg;         
+                picBox1.Image = ResizeQRImg;
             }
+        }
 
+        private void btnGenerateQR_Click(object sender, EventArgs e)
+        {
+
+            WriteLogo2QRBitmap();
             btnSaveQR.Enabled = true;
         }
 
@@ -317,6 +335,7 @@ namespace QR_C_Sharp_Test
             cbErrorCorrection.Enabled = true;
             cbQRVersion.Enabled = true;
             cbQRSize.Enabled = true;
+            txtSizeOfLogo.Enabled = true;
         }
 
         private void rbOptModNormal_CheckedChanged(object sender, EventArgs e)
@@ -325,6 +344,7 @@ namespace QR_C_Sharp_Test
             cbErrorCorrection.Enabled = false;
             cbQRVersion.Enabled = false;
             cbQRSize.Enabled = false;
+            txtSizeOfLogo.Enabled = false;
         }
 
         

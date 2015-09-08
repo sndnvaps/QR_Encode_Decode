@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtQRInput = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbQRSize = new System.Windows.Forms.Label();
+            this.cbQRSize = new System.Windows.Forms.ComboBox();
             this.cbErrorCorrection = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,15 +53,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerateQR = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbQRDecodeOutput = new System.Windows.Forms.Label();
             this.btnClipboard = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.picBox3 = new System.Windows.Forms.PictureBox();
             this.btnChooseQR = new System.Windows.Forms.Button();
             this.btnDecodeQR = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbQRSize = new System.Windows.Forms.ComboBox();
-            this.lbQRSize = new System.Windows.Forms.Label();
+            this.lbSizeofLogo = new System.Windows.Forms.Label();
+            this.txtSizeOfLogo = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbOptModeChoose.SuspendLayout();
@@ -69,9 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox3)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -150,11 +152,13 @@
             // 
             // gb2InsertLogo
             // 
+            this.gb2InsertLogo.Controls.Add(this.txtSizeOfLogo);
+            this.gb2InsertLogo.Controls.Add(this.lbSizeofLogo);
             this.gb2InsertLogo.Controls.Add(this.btnInsertLogo);
             this.gb2InsertLogo.Controls.Add(this.picBox2);
             this.gb2InsertLogo.Location = new System.Drawing.Point(364, 192);
             this.gb2InsertLogo.Name = "gb2InsertLogo";
-            this.gb2InsertLogo.Size = new System.Drawing.Size(191, 247);
+            this.gb2InsertLogo.Size = new System.Drawing.Size(191, 310);
             this.gb2InsertLogo.TabIndex = 11;
             this.gb2InsertLogo.TabStop = false;
             this.gb2InsertLogo.Text = "插入logo";
@@ -171,7 +175,7 @@
             // 
             // picBox2
             // 
-            this.picBox2.Location = new System.Drawing.Point(7, 62);
+            this.picBox2.Location = new System.Drawing.Point(7, 119);
             this.picBox2.Name = "picBox2";
             this.picBox2.Size = new System.Drawing.Size(179, 179);
             this.picBox2.TabIndex = 0;
@@ -227,6 +231,23 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "二维码生成选项";
+            // 
+            // lbQRSize
+            // 
+            this.lbQRSize.AutoSize = true;
+            this.lbQRSize.Location = new System.Drawing.Point(12, 54);
+            this.lbQRSize.Name = "lbQRSize";
+            this.lbQRSize.Size = new System.Drawing.Size(65, 12);
+            this.lbQRSize.TabIndex = 8;
+            this.lbQRSize.Text = "二维码尺寸";
+            // 
+            // cbQRSize
+            // 
+            this.cbQRSize.FormattingEnabled = true;
+            this.cbQRSize.Location = new System.Drawing.Point(85, 51);
+            this.cbQRSize.Name = "cbQRSize";
+            this.cbQRSize.Size = new System.Drawing.Size(71, 20);
+            this.cbQRSize.TabIndex = 7;
             // 
             // cbErrorCorrection
             // 
@@ -304,6 +325,16 @@
             this.tabPage2.Text = "解析二维码";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lbQRDecodeOutput);
+            this.groupBox3.Location = new System.Drawing.Point(6, 456);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(527, 55);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "解析出的内容";
+            // 
             // lbQRDecodeOutput
             // 
             this.lbQRDecodeOutput.AutoSize = true;
@@ -360,32 +391,21 @@
             this.btnDecodeQR.UseVisualStyleBackColor = true;
             this.btnDecodeQR.Click += new System.EventHandler(this.btnDecodeQR_Click);
             // 
-            // groupBox3
+            // lbSizeofLogo
             // 
-            this.groupBox3.Controls.Add(this.lbQRDecodeOutput);
-            this.groupBox3.Location = new System.Drawing.Point(6, 456);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(527, 55);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "解析出的内容";
+            this.lbSizeofLogo.AutoSize = true;
+            this.lbSizeofLogo.Location = new System.Drawing.Point(12, 59);
+            this.lbSizeofLogo.Name = "lbSizeofLogo";
+            this.lbSizeofLogo.Size = new System.Drawing.Size(77, 12);
+            this.lbSizeofLogo.TabIndex = 2;
+            this.lbSizeofLogo.Text = "定义logo大小";
             // 
-            // cbQRSize
+            // txtSizeOfLogo
             // 
-            this.cbQRSize.FormattingEnabled = true;
-            this.cbQRSize.Location = new System.Drawing.Point(85, 51);
-            this.cbQRSize.Name = "cbQRSize";
-            this.cbQRSize.Size = new System.Drawing.Size(71, 20);
-            this.cbQRSize.TabIndex = 7;
-            // 
-            // lbQRSize
-            // 
-            this.lbQRSize.AutoSize = true;
-            this.lbQRSize.Location = new System.Drawing.Point(12, 54);
-            this.lbQRSize.Name = "lbQRSize";
-            this.lbQRSize.Size = new System.Drawing.Size(65, 12);
-            this.lbQRSize.TabIndex = 8;
-            this.lbQRSize.Text = "二维码尺寸";
+            this.txtSizeOfLogo.Location = new System.Drawing.Point(91, 56);
+            this.txtSizeOfLogo.Name = "txtSizeOfLogo";
+            this.txtSizeOfLogo.Size = new System.Drawing.Size(52, 21);
+            this.txtSizeOfLogo.TabIndex = 3;
             // 
             // QREncode_Decode
             // 
@@ -403,16 +423,17 @@
             this.gbOptModeChoose.ResumeLayout(false);
             this.gbOptModeChoose.PerformLayout();
             this.gb2InsertLogo.ResumeLayout(false);
+            this.gb2InsertLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             this.gbOutputQR.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBox3)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,5 +471,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lbQRSize;
         private System.Windows.Forms.ComboBox cbQRSize;
+        private System.Windows.Forms.TextBox txtSizeOfLogo;
+        private System.Windows.Forms.Label lbSizeofLogo;
     }
 }

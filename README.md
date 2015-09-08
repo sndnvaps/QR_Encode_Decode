@@ -15,5 +15,7 @@
 	
 		4. 可保存生成的二维码到目录里面
 		
+		5. 定义logo的大小
+		
 		
 参考资料:http://www.cnblogs.com/yunfeifei/p/4305943.html

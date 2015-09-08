@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QR_C_Sharp_Test
+namespace QR_Encode_Decode
 {
     static class Program
     {

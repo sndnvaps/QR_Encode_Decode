@@ -1,4 +1,4 @@
-﻿namespace QR_C_Sharp_Test
+﻿namespace QR_Encode_Decode
 {
     partial class QREncode_Decode
     {

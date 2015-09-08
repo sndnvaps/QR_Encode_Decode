@@ -11,7 +11,7 @@ using ThoughtWorks.QRCode.Codec;
 using ThoughtWorks.QRCode;
 
 
-namespace QR_C_Sharp_Test
+namespace QR_Encode_Decode
 {
     public partial class QREncode_Decode : Form
     {

@@ -19,8 +19,10 @@ namespace QR_C_Sharp_Test
         {
             InitializeComponent();
         }
-        private object logoImage;
-        private object DecodeImage;
+        private object logoImage;  //用于加载 自定义LOGO
+        private object DecodeImage; //用于加载 解析图片
+        private object QRImage; //用于保存生成的二维码图片
+        QRCodeEncoder QRencode; //二维码生成 
         private void QREncode_Decode_Load(object sender, EventArgs e)
         {
             InitQRCombox();
@@ -122,32 +124,52 @@ namespace QR_C_Sharp_Test
             return qrsize;
         }
 
-        private Bitmap GenerateCode()
-        {
-            string qrstr = txtQRInput.Text.ToString();
-            QRCodeEncoder qrencode = new QRCodeEncoder();
-            qrencode.QRCodeEncodeMode = GetEncodeMode(cbEndoeMode.Text.ToString());
-            qrencode.QRCodeScale = GetQRSize(cbQRSize.Text.ToString());
-            qrencode.QRCodeVersion = GetQRVersion(cbQRVersion.Text.ToString());
-            qrencode.QRCodeErrorCorrect = GetErrorCorrection(cbErrorCorrection.Text.ToString());
 
-            Bitmap img = qrencode.Encode(qrstr, Encoding.UTF8);
-            return img;
-            
+        private void GenerateQRCodeBitmap( out object img, QRCodeEncoder qrEncode, string encodeStr, Encoding encode)
+        {
+           
+            try
+            {
+                //判断是否已经输入了要生成二维码的内容 
+                if (string.IsNullOrEmpty(encodeStr) == true)
+                {
+                    throw new Exception("请输入要生成二维码的内容");
+                }
+
+                qrEncode = new QRCodeEncoder();
+                qrEncode.QRCodeEncodeMode = GetEncodeMode(cbEndoeMode.Text.ToString());
+                qrEncode.QRCodeScale = GetQRSize(cbQRSize.Text.ToString());
+                qrEncode.QRCodeVersion = GetQRVersion(cbQRVersion.Text.ToString());
+                qrEncode.QRCodeErrorCorrect = GetErrorCorrection(cbErrorCorrection.Text.ToString());
+
+                img = qrEncode.Encode(encodeStr, Encoding.UTF8); //生成二维码，并保存到img 类当中
+            }
+            catch (IndexOutOfRangeException ioRe)
+           {
+               MessageBox.Show(ioRe.Message,"系统提示");
+               img = new Bitmap(100, 100);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message,"系统提示");
+                img = new Bitmap(100, 100);
+            }
         }
 
         private void btnGenerateQR_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtQRInput.Text))
-            {
-                MessageBox.Show("请输入要生成二维码的内容","系统提示");
-            }
-            Bitmap QRImg = GenerateCode();
+            //生成二维码，并保存到 object QRImage 当中
+           GenerateQRCodeBitmap(out QRImage, QRencode, txtQRInput.Text.ToString(), Encoding.UTF8);
+            
+          
+            Bitmap QRImg = QRImage as Bitmap; //取出数据，并保存到QRImage 当中
+
             Bitmap ResizeQRImg;
             //当生成的二维码大于图片窗口时， 重新修改二维码的尺寸以适应窗口大小
             if (QRImg.Width > picBox1.Width)
             {
-                ResizeQRImg = new Bitmap(QRImg, picBox1.Width, picBox1.Height);
+                ResizeQRImg = new Bitmap(QRImg, picBox1.Width, picBox1.Height); 
             }
             else
             {
@@ -257,13 +279,20 @@ namespace QR_C_Sharp_Test
             }
             else
             {
-                QRCodeDecoder qrDecode = new QRCodeDecoder();
-                //qrDecode.decode()
-                Bitmap decodeimage = DecodeImage as Bitmap;
-                Bitmap bmp = new Bitmap(decodeimage, picBox3.Width, picBox3.Height);
-                ThoughtWorks.QRCode.Codec.Data.QRCodeImage qrimage = new ThoughtWorks.QRCode.Codec.Data.QRCodeBitmapImage(bmp);
-                lbQRDecodeOutput.Text =  qrDecode.decode(qrimage, Encoding.UTF8);
-
+                //获取出错 Exception 
+                try
+                {
+                    QRCodeDecoder qrDecode = new QRCodeDecoder();
+                    //qrDecode.decode()
+                    Bitmap decodeimage = DecodeImage as Bitmap;
+                    Bitmap bmp = new Bitmap(decodeimage, picBox3.Width, picBox3.Height);
+                    ThoughtWorks.QRCode.Codec.Data.QRCodeImage qrimage = new ThoughtWorks.QRCode.Codec.Data.QRCodeBitmapImage(bmp);
+                    lbQRDecodeOutput.Text = qrDecode.decode(qrimage, Encoding.UTF8);
+                }
+                catch (ThoughtWorks.QRCode.ExceptionHandler.DecodingFailedException dfE)
+                {
+                    MessageBox.Show(dfE.Message); //显示解析二维码出错的原因
+                }
 
 
             }

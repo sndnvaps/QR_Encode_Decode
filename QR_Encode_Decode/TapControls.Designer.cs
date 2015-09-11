@@ -36,6 +36,8 @@
             this.rbOptModPro = new System.Windows.Forms.RadioButton();
             this.btnSaveQR = new System.Windows.Forms.Button();
             this.gb2InsertLogo = new System.Windows.Forms.GroupBox();
+            this.txtSizeOfLogo = new System.Windows.Forms.TextBox();
+            this.lbSizeofLogo = new System.Windows.Forms.Label();
             this.btnInsertLogo = new System.Windows.Forms.Button();
             this.picBox2 = new System.Windows.Forms.PictureBox();
             this.gbOutputQR = new System.Windows.Forms.GroupBox();
@@ -60,8 +62,6 @@
             this.picBox3 = new System.Windows.Forms.PictureBox();
             this.btnChooseQR = new System.Windows.Forms.Button();
             this.btnDecodeQR = new System.Windows.Forms.Button();
-            this.lbSizeofLogo = new System.Windows.Forms.Label();
-            this.txtSizeOfLogo = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbOptModeChoose.SuspendLayout();
@@ -162,6 +162,22 @@
             this.gb2InsertLogo.TabIndex = 11;
             this.gb2InsertLogo.TabStop = false;
             this.gb2InsertLogo.Text = "插入logo";
+            // 
+            // txtSizeOfLogo
+            // 
+            this.txtSizeOfLogo.Location = new System.Drawing.Point(91, 56);
+            this.txtSizeOfLogo.Name = "txtSizeOfLogo";
+            this.txtSizeOfLogo.Size = new System.Drawing.Size(52, 21);
+            this.txtSizeOfLogo.TabIndex = 3;
+            // 
+            // lbSizeofLogo
+            // 
+            this.lbSizeofLogo.AutoSize = true;
+            this.lbSizeofLogo.Location = new System.Drawing.Point(12, 59);
+            this.lbSizeofLogo.Name = "lbSizeofLogo";
+            this.lbSizeofLogo.Size = new System.Drawing.Size(77, 12);
+            this.lbSizeofLogo.TabIndex = 2;
+            this.lbSizeofLogo.Text = "定义logo大小";
             // 
             // btnInsertLogo
             // 
@@ -390,22 +406,6 @@
             this.btnDecodeQR.Text = "解释二维码";
             this.btnDecodeQR.UseVisualStyleBackColor = true;
             this.btnDecodeQR.Click += new System.EventHandler(this.btnDecodeQR_Click);
-            // 
-            // lbSizeofLogo
-            // 
-            this.lbSizeofLogo.AutoSize = true;
-            this.lbSizeofLogo.Location = new System.Drawing.Point(12, 59);
-            this.lbSizeofLogo.Name = "lbSizeofLogo";
-            this.lbSizeofLogo.Size = new System.Drawing.Size(77, 12);
-            this.lbSizeofLogo.TabIndex = 2;
-            this.lbSizeofLogo.Text = "定义logo大小";
-            // 
-            // txtSizeOfLogo
-            // 
-            this.txtSizeOfLogo.Location = new System.Drawing.Point(91, 56);
-            this.txtSizeOfLogo.Name = "txtSizeOfLogo";
-            this.txtSizeOfLogo.Size = new System.Drawing.Size(52, 21);
-            this.txtSizeOfLogo.TabIndex = 3;
             // 
             // QREncode_Decode
             // 

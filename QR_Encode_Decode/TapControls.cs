@@ -22,7 +22,7 @@ namespace QR_Encode_Decode
         private object logoImage;  //用于加载 自定义LOGO
         private object DecodeImage; //用于加载 解析图片
         private object QRImage; //用于保存生成的二维码图片
-        QRCodeEncoder QRencode; //二维码生成 
+        //QRCodeEncoder QRencode; //二维码生成 
        // int LogoSize; //定义logo的大小 ，默认大小为 30;
         private void QREncode_Decode_Load(object sender, EventArgs e)
         {
@@ -58,8 +58,8 @@ namespace QR_Encode_Decode
             //共有40个版本号, 
             // v1 - v40 
             for (int i = 1; i <= 40; i++) {
-                string QRVersionCode = i.ToString();
-                cbQRVersion.Items.Add(QRVersionCode);
+                int item = i;
+                cbQRVersion.Items.Add(item);
             }
             cbQRVersion.SelectedIndex = 6;
 
@@ -69,17 +69,18 @@ namespace QR_Encode_Decode
             //目前只设置7个尺寸
             for (int j = 4; j <= 10; j++)
             {
-                string QRSize = j.ToString();
+                int QRSize = j;
                 cbQRSize.Items.Add(QRSize);
             }
             cbQRSize.SelectedIndex = 0; //默认选择为 4
             
         }
         //根据选项，获取当前的压缩格式
-        private QRCodeEncoder.ENCODE_MODE GetEncodeMode(string encodemode)
+        private QRCodeEncoder.ENCODE_MODE GetEncodeMode(object encodemode)
         {
             QRCodeEncoder.ENCODE_MODE QREcodeMode;
-            switch (encodemode)
+            string ecm = encodemode as string;
+            switch (ecm)
             {
                 case "ALPHA_NUMERIC": QREcodeMode = QRCodeEncoder.ENCODE_MODE.ALPHA_NUMERIC;
                     break;
@@ -95,10 +96,11 @@ namespace QR_Encode_Decode
         }
 
         //根据选项，获取当前的修正比例
-        private QRCodeEncoder.ERROR_CORRECTION GetErrorCorrection(string errCorrection)
+        private QRCodeEncoder.ERROR_CORRECTION GetErrorCorrection(object errCorrection)
         {
             QRCodeEncoder.ERROR_CORRECTION QRErrCorrection;
-            switch (errCorrection)
+            string ec = errCorrection as string;
+            switch (ec)
             {
                 case "7%": QRErrCorrection = QRCodeEncoder.ERROR_CORRECTION.L;
                     break;
@@ -114,17 +116,17 @@ namespace QR_Encode_Decode
             return QRErrCorrection;
         }
 
-        private int GetQRVersion(string QRVersionStr)
+        private int GetQRVersion(object QRVersionStr)
         {
             int qrversion = 1;
-            qrversion = Convert.ToInt32(QRVersionStr);
+            qrversion = (int)QRVersionStr;
             return qrversion;
         }
 
-        private int GetQRSize(string QRSizeStr)
+        private int GetQRSize(object QRSizeStr)
         {
             int qrsize = 4;
-            qrsize = Convert.ToInt32(QRSizeStr);
+            qrsize = (int)QRSizeStr;
             return qrsize;
         }
         private int GetSizeOfLogo(string QRLogoSize)
@@ -146,12 +148,11 @@ namespace QR_Encode_Decode
                 }
 
                 qrEncode = new QRCodeEncoder();
-                qrEncode.QRCodeEncodeMode = GetEncodeMode(cbEndoeMode.Text.ToString());
-                qrEncode.QRCodeScale = GetQRSize(cbQRSize.Text.ToString());
-                qrEncode.QRCodeVersion = GetQRVersion(cbQRVersion.Text.ToString());
-                qrEncode.QRCodeErrorCorrect = GetErrorCorrection(cbErrorCorrection.Text.ToString());
-
-                img = qrEncode.Encode(encodeStr, Encoding.UTF8); //生成二维码，并保存到img 类当中
+                qrEncode.QRCodeEncodeMode = GetEncodeMode(cbEndoeMode.SelectedItem); //选择压缩的方式
+                qrEncode.QRCodeScale = GetQRSize(cbQRSize.SelectedItem);
+                qrEncode.QRCodeVersion = GetQRVersion(cbQRVersion.SelectedItem);   //选择QR版本
+                qrEncode.QRCodeErrorCorrect = GetErrorCorrection(cbErrorCorrection.SelectedItem);  //选择修正率
+                img = qrEncode.Encode(encodeStr, encode); //生成二维码，并保存到img 类当中
             }
             catch (IndexOutOfRangeException ioRe)
            {
@@ -169,7 +170,7 @@ namespace QR_Encode_Decode
         private void WriteLogo2QRBitmap() 
         {
 
-
+            QRCodeEncoder QRencode = null; //二维码生成 
             //生成二维码，并保存到 object QRImage 当中
             GenerateQRCodeBitmap(out QRImage, QRencode, txtQRInput.Text.ToString(), Encoding.UTF8);
 

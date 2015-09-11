@@ -61,7 +61,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>QR.ico</ApplicationIcon>
+    <ApplicationIcon>qr_1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QR.ico" />
+    <Content Include="qr_1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

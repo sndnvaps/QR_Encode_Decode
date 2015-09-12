@@ -24,8 +24,63 @@ namespace QR_Encode_Decode
         private object QRImage; //用于保存生成的二维码图片
         //QRCodeEncoder QRencode; //二维码生成 
        // int LogoSize; //定义logo的大小 ，默认大小为 30;
+
+        private float X;
+
+        private float Y;
+
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                    setTag(con);
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+
+                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+                float a = Convert.ToSingle(mytag[0]) * newx;
+                con.Width = (int)a;
+                a = Convert.ToSingle(mytag[1]) * newy;
+                con.Height = (int)(a);
+                a = Convert.ToSingle(mytag[2]) * newx;
+                con.Left = (int)(a);
+                a = Convert.ToSingle(mytag[3]) * newy;
+                con.Top = (int)(a);
+                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                if (con.Controls.Count > 0)
+                {
+                    setControls(newx, newy, con);
+                }
+            }
+
+        }
+
+        void QR_Encode_Decode_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X;
+            float newy = this.Height / Y;
+            setControls(newx, newy, this);
+            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+
+        }
+
+ 
+
         private void QREncode_Decode_Load(object sender, EventArgs e)
         {
+            //用于定义窗口的自动变化
+            this.Resize += new EventHandler(QR_Encode_Decode_Resize);
+            X = this.Width;
+            Y = this.Height;
+
+            setTag(this);
             InitQRCombox();
             btnSaveQR.Enabled = false;
 
@@ -34,7 +89,17 @@ namespace QR_Encode_Decode
             //LogoSize = 30; 
             txtSizeOfLogo.Text = "30"; //初始大小为30 
 
+           // this.MinimumSize = new Size(609, 676);
+           // this.MaximumSize = new Size(800, 900);
+
+         
+         
+
+           
+
         }
+
+       
 
         private void InitQRCombox()
         {
@@ -75,6 +140,8 @@ namespace QR_Encode_Decode
             cbQRSize.SelectedIndex = 0; //默认选择为 4
             
         }
+
+
         //根据选项，获取当前的压缩格式
         private QRCodeEncoder.ENCODE_MODE GetEncodeMode(object encodemode)
         {

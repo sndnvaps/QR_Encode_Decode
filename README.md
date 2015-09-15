@@ -17,5 +17,7 @@
 		
 		5. 定义logo的大小
 		
+		6. 生成联系人二维码，手机扫描专用(vCard格式)
+		
 		
 参考资料:http://www.cnblogs.com/yunfeifei/p/4305943.html

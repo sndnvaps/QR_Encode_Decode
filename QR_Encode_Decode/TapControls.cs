@@ -23,7 +23,8 @@ namespace QR_Encode_Decode
         private object DecodeImage; //用于加载 解析图片
         private object QRImage; //用于保存生成的二维码图片
 
-        private object QRContactImage; //用于生成二维码联系人
+       // private object QRContactImage; //用于生成二维码联系人
+        private object QRContactlogoImg; //用于获取联系人自定义图标
         
         //QRCodeEncoder QRencode; //二维码生成 
        // int LogoSize; //定义logo的大小 ，默认大小为 30;
@@ -70,7 +71,7 @@ namespace QR_Encode_Decode
             float newx = (this.Width) / X;
             float newy = this.Height / Y;
             setControls(newx, newy, this);
-            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+            //this.Text = this.Width.ToString() + " " + this.Height.ToString();
 
         }
 
@@ -91,6 +92,7 @@ namespace QR_Encode_Decode
 
             //LogoSize = 30; 
             txtSizeOfLogo.Text = "30"; //初始大小为30 
+            txtContactLogoSize.Text = "30"; //初始大小为30
 
            // this.MinimumSize = new Size(609, 676);
            // this.MaximumSize = new Size(800, 900);
@@ -268,7 +270,9 @@ namespace QR_Encode_Decode
                 bLogo = new Bitmap(bLogo, logosize, logosize);
                 int Y = ResizeQRImg.Height;
                 int X = ResizeQRImg.Width;
-                Point point = new Point(X / 2 - 15, Y / 2 - 15);//logo图片绘制到二维码上，这里将简单计算一下logo所在的坐标 
+                //坐标点是 （x/2 - logosize/2,y/2 - logosize/2)
+                //Point point = new Point(X / 2 - 15, Y / 2 - 15);//logo图片绘制到二维码上，这里将简单计算一下logo所在的坐标 
+                Point point = new Point(X / 2 - logosize / 2, Y / 2 - logosize / 2); 
                 Graphics g = Graphics.FromImage(ResizeQRImg);//创建一个画布           
                 g.DrawImage(bLogo, point);//将logo图片绘制到二维码图片上    
 
@@ -303,22 +307,28 @@ namespace QR_Encode_Decode
             }  
         }
 
-      
-
-        private void btnInsertLogo_Click(object sender, EventArgs e)
+        private object GetLogoFile(PictureBox pic)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();//文件打开对话框      
-            openFileDialog.Filter = "JPEG|*.jpeg;*.jpg|位图文件|*.bmp|所有文件|*.*";//只能打开我们设置的这几类文件 
+            openFileDialog.Filter = "JPEG|*.jpeg;*.jpg|位图文件|*.bmp|所有文件|PNG|*.png|*.*";//只能打开我们设置的这几类文件 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
-                int picheight = picBox2.Height;
-                int picwidth = picBox2.Width;
+                int picheight = pic.Height;
+                int picwidth = pic.Width;
                 Bitmap newBmp = new Bitmap(fileName);
-                Bitmap bmp = new Bitmap(newBmp,picwidth,picheight);
-                picBox2.Image = bmp;
-                logoImage = bmp;
+                object img;
+                Bitmap bmp = new Bitmap(newBmp, picwidth, picheight);
+                pic.Image = bmp;
+                img = bmp;
+                return img;
             }
+            return new Bitmap(100, 100);
+        }
+
+        private void btnInsertLogo_Click(object sender, EventArgs e)
+        {
+           logoImage =  GetLogoFile(picBox2);
         }
 
 
@@ -328,7 +338,7 @@ namespace QR_Encode_Decode
         private void btnChooseQR_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();//文件打开对话框      
-            openFileDialog.Filter = "JPEG|*.jpeg;*.jpg|位图文件|*.bmp|所有文件|*.*";//只能打开我们设置的这几类文件 
+            openFileDialog.Filter = "JPEG|*.jpeg;*.jpg|位图文件|*.bmp|PNG|*.png|所有文件|*.*";//只能打开我们设置的这几类文件 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
@@ -412,7 +422,7 @@ namespace QR_Encode_Decode
             txtSizeOfLogo.Enabled = false;
         }
         #region 生成二维码联系人
-
+        //把输入的内容,变成vCard格式的字符串
         private string GetContactstr()
         {
             string str;
@@ -433,7 +443,12 @@ namespace QR_Encode_Decode
             return str;
 
         }
-        private void button1_Click(object sender, EventArgs e) //用于生成二维码联系人
+        private void btnContactChooseLogo_Click(object sender, EventArgs e)
+        {
+            QRContactlogoImg = GetLogoFile(picBoxContactLogo); //获取logo图片
+        }
+
+        private void CreateQRContactbmp()
         {
             string encodestr = GetContactstr();
             try
@@ -469,18 +484,49 @@ namespace QR_Encode_Decode
 
                 picContactImg.Image = ResizeQRImg;
 
+
+                if (QRContactlogoImg == null)
+                {
+                    //picBox1.Image = ResizeQRImg;
+                    picContactImg.Image = ResizeQRImg;
+
+                }
+                else
+                {
+                    Bitmap bLogo = QRContactlogoImg as Bitmap; //获取logo图片对象 
+                    //bLogo = new Bitmap(bLogo, 30, 30); //改变图片的大小这里我们设置为30   
+                    int logosize = GetSizeOfLogo(txtContactLogoSize.Text);
+                    bLogo = new Bitmap(bLogo, logosize, logosize);
+                    int Y = ResizeQRImg.Height;
+                    int X = ResizeQRImg.Width;
+                    //坐标点是 （x/2 - logosize/2,y/2 - logosize/2)
+                    //Point point = new Point(X / 2 - 15, Y / 2 - 15);//logo图片绘制到二维码上，这里将简单计算一下logo所在的坐标 
+                    Point point = new Point(X / 2 - logosize / 2, Y / 2 - logosize / 2);
+                    Graphics g = Graphics.FromImage(ResizeQRImg);//创建一个画布           
+                    g.DrawImage(bLogo, point);//将logo图片绘制到二维码图片上    
+
+                    picContactImg.Image = ResizeQRImg;
+                }
+
+
+
             }
             catch (IndexOutOfRangeException ioRe)
             {
                 MessageBox.Show(ioRe.Message, "请选择高一些的 二维码版本");
-               
+
 
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "系统提示");
-               
+
             }
+        }
+
+        private void btnCreateContactQR_Click(object sender, EventArgs e) //用于生成二维码联系人
+        {
+            CreateQRContactbmp();
         }
 
         private void btnSaveQRContact_Click(object sender, EventArgs e) //用于保存二维码图片到本地
@@ -501,6 +547,14 @@ namespace QR_Encode_Decode
                 MessageBox.Show("请先 生成二维码图片", "系统提示");
             }  
         }
+        #endregion
+
+        #region 版本说明
+        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("此程序由江门振业水产杨万荣创建\n版权归杨万荣所有\n","二维码生成和解释工具");
+        }
+
         #endregion
 
 

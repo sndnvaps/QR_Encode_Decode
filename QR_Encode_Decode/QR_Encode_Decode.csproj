@@ -48,10 +48,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A58D9AB0E6193FC4979936155120FB72B6B21BF7</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A9E80A1335D989ED7A77D1FE08D8A6ED6FFCE317</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>QR_Encode_Decode_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -61,6 +62,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>qr_1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>sndnvaps.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -111,6 +118,7 @@
     </Compile>
     <None Include="QR_C-Sharp_Test_TemporaryKey.pfx" />
     <None Include="QR_Encode_Decode_TemporaryKey.pfx" />
+    <None Include="sndnvaps.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

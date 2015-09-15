@@ -65,6 +65,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnSaveQRContact = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtContactLogoSize = new System.Windows.Forms.TextBox();
+            this.lbContactLogoSize = new System.Windows.Forms.Label();
             this.btnContactChooseLogo = new System.Windows.Forms.Button();
             this.picBoxContactLogo = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -89,8 +91,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lbContactName = new System.Windows.Forms.Label();
             this.btnCreateContactQR = new System.Windows.Forms.Button();
-            this.lbContactLogoSize = new System.Windows.Forms.Label();
-            this.txtContactLogoSize = new System.Windows.Forms.TextBox();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -484,6 +484,22 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "自定义logo";
             // 
+            // txtContactLogoSize
+            // 
+            this.txtContactLogoSize.Location = new System.Drawing.Point(96, 55);
+            this.txtContactLogoSize.Name = "txtContactLogoSize";
+            this.txtContactLogoSize.Size = new System.Drawing.Size(79, 21);
+            this.txtContactLogoSize.TabIndex = 9;
+            // 
+            // lbContactLogoSize
+            // 
+            this.lbContactLogoSize.AutoSize = true;
+            this.lbContactLogoSize.Location = new System.Drawing.Point(13, 58);
+            this.lbContactLogoSize.Name = "lbContactLogoSize";
+            this.lbContactLogoSize.Size = new System.Drawing.Size(77, 12);
+            this.lbContactLogoSize.TabIndex = 6;
+            this.lbContactLogoSize.Text = "设置Logo大小";
+            // 
             // btnContactChooseLogo
             // 
             this.btnContactChooseLogo.Location = new System.Drawing.Point(15, 20);
@@ -701,22 +717,6 @@
             this.btnCreateContactQR.UseVisualStyleBackColor = true;
             this.btnCreateContactQR.Click += new System.EventHandler(this.btnCreateContactQR_Click);
             // 
-            // lbContactLogoSize
-            // 
-            this.lbContactLogoSize.AutoSize = true;
-            this.lbContactLogoSize.Location = new System.Drawing.Point(13, 58);
-            this.lbContactLogoSize.Name = "lbContactLogoSize";
-            this.lbContactLogoSize.Size = new System.Drawing.Size(77, 12);
-            this.lbContactLogoSize.TabIndex = 6;
-            this.lbContactLogoSize.Text = "设置Logo大小";
-            // 
-            // txtContactLogoSize
-            // 
-            this.txtContactLogoSize.Location = new System.Drawing.Point(96, 55);
-            this.txtContactLogoSize.Name = "txtContactLogoSize";
-            this.txtContactLogoSize.Size = new System.Drawing.Size(79, 21);
-            this.txtContactLogoSize.TabIndex = 9;
-            // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -753,7 +753,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "QREncode_Decode";
-            this.Text = "QR二维码生成和解释工具--江门振业杨万荣";
+            this.Text = "QR二维码生成和解释工具";
             this.Load += new System.EventHandler(this.QREncode_Decode_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

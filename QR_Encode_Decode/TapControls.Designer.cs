@@ -62,6 +62,32 @@
             this.picBox3 = new System.Windows.Forms.PictureBox();
             this.btnChooseQR = new System.Windows.Forms.Button();
             this.btnDecodeQR = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbContactName = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtContactName = new System.Windows.Forms.TextBox();
+            this.txtContactTel = new System.Windows.Forms.TextBox();
+            this.txtContactTELCell = new System.Windows.Forms.TextBox();
+            this.txtContactORG = new System.Windows.Forms.TextBox();
+            this.txtContactTitle = new System.Windows.Forms.TextBox();
+            this.txtContactADD = new System.Windows.Forms.TextBox();
+            this.txtContactMailBox = new System.Windows.Forms.TextBox();
+            this.txtContactURL = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.picContactImg = new System.Windows.Forms.PictureBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.picBoxContactLogo = new System.Windows.Forms.PictureBox();
+            this.btnSaveQRContact = new System.Windows.Forms.Button();
+            this.lbNote = new System.Windows.Forms.Label();
+            this.txtContactNote = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbOptModeChoose.SuspendLayout();
@@ -74,12 +100,19 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox3)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picContactImg)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxContactLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -407,6 +440,247 @@
             this.btnDecodeQR.UseVisualStyleBackColor = true;
             this.btnDecodeQR.Click += new System.EventHandler(this.btnDecodeQR_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnSaveQRContact);
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.groupBox4);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(561, 578);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "联系人名片生成";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 552);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "生成联系人二维码";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtContactNote);
+            this.groupBox4.Controls.Add(this.lbNote);
+            this.groupBox4.Controls.Add(this.txtContactURL);
+            this.groupBox4.Controls.Add(this.txtContactMailBox);
+            this.groupBox4.Controls.Add(this.txtContactADD);
+            this.groupBox4.Controls.Add(this.txtContactTitle);
+            this.groupBox4.Controls.Add(this.txtContactORG);
+            this.groupBox4.Controls.Add(this.txtContactTELCell);
+            this.groupBox4.Controls.Add(this.txtContactTel);
+            this.groupBox4.Controls.Add(this.txtContactName);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.lbContactName);
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(460, 243);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "联系人信息";
+            // 
+            // lbContactName
+            // 
+            this.lbContactName.AutoSize = true;
+            this.lbContactName.Location = new System.Drawing.Point(17, 32);
+            this.lbContactName.Name = "lbContactName";
+            this.lbContactName.Size = new System.Drawing.Size(35, 12);
+            this.lbContactName.TabIndex = 0;
+            this.lbContactName.Text = "姓名:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "固定电话";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(211, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "移动电话";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "公司";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "职位";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 130);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "地址";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 155);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(29, 12);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "邮箱";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 180);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "网址";
+            // 
+            // txtContactName
+            // 
+            this.txtContactName.Location = new System.Drawing.Point(76, 23);
+            this.txtContactName.Name = "txtContactName";
+            this.txtContactName.Size = new System.Drawing.Size(116, 21);
+            this.txtContactName.TabIndex = 8;
+            // 
+            // txtContactTel
+            // 
+            this.txtContactTel.Location = new System.Drawing.Point(76, 50);
+            this.txtContactTel.Name = "txtContactTel";
+            this.txtContactTel.Size = new System.Drawing.Size(116, 21);
+            this.txtContactTel.TabIndex = 9;
+            // 
+            // txtContactTELCell
+            // 
+            this.txtContactTELCell.Location = new System.Drawing.Point(287, 50);
+            this.txtContactTELCell.Name = "txtContactTELCell";
+            this.txtContactTELCell.Size = new System.Drawing.Size(116, 21);
+            this.txtContactTELCell.TabIndex = 10;
+            // 
+            // txtContactORG
+            // 
+            this.txtContactORG.Location = new System.Drawing.Point(76, 77);
+            this.txtContactORG.Name = "txtContactORG";
+            this.txtContactORG.Size = new System.Drawing.Size(247, 21);
+            this.txtContactORG.TabIndex = 11;
+            // 
+            // txtContactTitle
+            // 
+            this.txtContactTitle.Location = new System.Drawing.Point(76, 104);
+            this.txtContactTitle.Name = "txtContactTitle";
+            this.txtContactTitle.Size = new System.Drawing.Size(116, 21);
+            this.txtContactTitle.TabIndex = 12;
+            // 
+            // txtContactADD
+            // 
+            this.txtContactADD.Location = new System.Drawing.Point(76, 130);
+            this.txtContactADD.Name = "txtContactADD";
+            this.txtContactADD.Size = new System.Drawing.Size(327, 21);
+            this.txtContactADD.TabIndex = 13;
+            // 
+            // txtContactMailBox
+            // 
+            this.txtContactMailBox.Location = new System.Drawing.Point(76, 155);
+            this.txtContactMailBox.Name = "txtContactMailBox";
+            this.txtContactMailBox.Size = new System.Drawing.Size(247, 21);
+            this.txtContactMailBox.TabIndex = 14;
+            // 
+            // txtContactURL
+            // 
+            this.txtContactURL.Location = new System.Drawing.Point(76, 180);
+            this.txtContactURL.Name = "txtContactURL";
+            this.txtContactURL.Size = new System.Drawing.Size(247, 21);
+            this.txtContactURL.TabIndex = 15;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.picContactImg);
+            this.groupBox5.Location = new System.Drawing.Point(12, 252);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(255, 284);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "二维码";
+            // 
+            // picContactImg
+            // 
+            this.picContactImg.Location = new System.Drawing.Point(6, 35);
+            this.picContactImg.Name = "picContactImg";
+            this.picContactImg.Size = new System.Drawing.Size(243, 243);
+            this.picContactImg.TabIndex = 0;
+            this.picContactImg.TabStop = false;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.picBoxContactLogo);
+            this.groupBox6.Location = new System.Drawing.Point(302, 284);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(216, 252);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "自定义logo";
+            // 
+            // picBoxContactLogo
+            // 
+            this.picBoxContactLogo.Location = new System.Drawing.Point(15, 63);
+            this.picBoxContactLogo.Name = "picBoxContactLogo";
+            this.picBoxContactLogo.Size = new System.Drawing.Size(183, 183);
+            this.picBoxContactLogo.TabIndex = 0;
+            this.picBoxContactLogo.TabStop = false;
+            // 
+            // btnSaveQRContact
+            // 
+            this.btnSaveQRContact.Location = new System.Drawing.Point(317, 552);
+            this.btnSaveQRContact.Name = "btnSaveQRContact";
+            this.btnSaveQRContact.Size = new System.Drawing.Size(116, 23);
+            this.btnSaveQRContact.TabIndex = 4;
+            this.btnSaveQRContact.Text = "保存二维码为图片";
+            this.btnSaveQRContact.UseVisualStyleBackColor = true;
+            this.btnSaveQRContact.Click += new System.EventHandler(this.btnSaveQRContact_Click);
+            // 
+            // lbNote
+            // 
+            this.lbNote.AutoSize = true;
+            this.lbNote.Location = new System.Drawing.Point(17, 213);
+            this.lbNote.Name = "lbNote";
+            this.lbNote.Size = new System.Drawing.Size(53, 12);
+            this.lbNote.TabIndex = 16;
+            this.lbNote.Text = "即时通讯";
+            // 
+            // txtContactNote
+            // 
+            this.txtContactNote.Location = new System.Drawing.Point(76, 213);
+            this.txtContactNote.Name = "txtContactNote";
+            this.txtContactNote.Size = new System.Drawing.Size(327, 21);
+            this.txtContactNote.TabIndex = 17;
+            // 
             // QREncode_Decode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -434,6 +708,13 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBox3)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picContactImg)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxContactLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,5 +754,31 @@
         private System.Windows.Forms.ComboBox cbQRSize;
         private System.Windows.Forms.TextBox txtSizeOfLogo;
         private System.Windows.Forms.Label lbSizeofLogo;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox picBoxContactLogo;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.PictureBox picContactImg;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtContactURL;
+        private System.Windows.Forms.TextBox txtContactMailBox;
+        private System.Windows.Forms.TextBox txtContactADD;
+        private System.Windows.Forms.TextBox txtContactTitle;
+        private System.Windows.Forms.TextBox txtContactORG;
+        private System.Windows.Forms.TextBox txtContactTELCell;
+        private System.Windows.Forms.TextBox txtContactTel;
+        private System.Windows.Forms.TextBox txtContactName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbContactName;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSaveQRContact;
+        private System.Windows.Forms.TextBox txtContactNote;
+        private System.Windows.Forms.Label lbNote;
     }
 }

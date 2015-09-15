@@ -22,6 +22,9 @@ namespace QR_Encode_Decode
         private object logoImage;  //用于加载 自定义LOGO
         private object DecodeImage; //用于加载 解析图片
         private object QRImage; //用于保存生成的二维码图片
+
+        private object QRContactImage; //用于生成二维码联系人
+        
         //QRCodeEncoder QRencode; //二维码生成 
        // int LogoSize; //定义logo的大小 ，默认大小为 30;
 
@@ -91,12 +94,6 @@ namespace QR_Encode_Decode
 
            // this.MinimumSize = new Size(609, 676);
            // this.MaximumSize = new Size(800, 900);
-
-         
-         
-
-           
-
         }
 
        
@@ -414,7 +411,98 @@ namespace QR_Encode_Decode
             cbQRSize.Enabled = false;
             txtSizeOfLogo.Enabled = false;
         }
+        #region 生成二维码联系人
 
-        
+        private string GetContactstr()
+        {
+            string str;
+            str = string.Format("BEGIN:VCARD\n" +
+                               "VERSION:3.0\n" +
+                               "N:{0}\n" +
+                                "EMAIL:{1}\n" +
+                                "TEL:{2}\n" +
+                                "TEL;CELL:{3}\n" +
+                                "ADR:{4}\n" +
+                                "ORG:{5}\n" +
+                                "TITLE:{6}\n" +
+                                "URL:{7}" +
+                                "NOTE:{8}\n" +
+                                "END:VCARD",txtContactName.Text,txtContactMailBox.Text,txtContactTel.Text,txtContactTELCell.Text,
+                                txtContactADD.Text,txtContactORG.Text,txtContactTitle.Text,txtContactURL.Text,txtContactNote.Text);
+
+            return str;
+
+        }
+        private void button1_Click(object sender, EventArgs e) //用于生成二维码联系人
+        {
+            string encodestr = GetContactstr();
+            try
+            {
+                //判断是否已经输入了要生成二维码的内容 
+                if (string.IsNullOrEmpty(encodestr) == true)
+                {
+                    throw new Exception("请输入要生成二维码的内容");
+                }
+                Encoding en = Encoding.UTF8;
+                Bitmap ContactImg;
+                QRCodeEncoder qrencode = new QRCodeEncoder();
+                qrencode = new QRCodeEncoder();
+                qrencode.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE; //选择压缩的方式
+                qrencode.QRCodeScale = 4;
+                qrencode.QRCodeVersion = 14;   //选择QR版本
+                qrencode.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M;  //选择修正率
+                ContactImg = qrencode.Encode(encodestr, en); //生成二维码，并保存到img 类当中
+
+                Bitmap ResizeQRImg;
+                //当生成的二维码大于图片窗口时， 重新修改二维码的尺寸以适应窗口大小
+                if (ContactImg.Width > picContactImg.Width)
+                {
+                    ResizeQRImg = new Bitmap(ContactImg, picContactImg.Width, picContactImg.Height);
+                }
+                else
+                {
+                    //当二维码的尺寸小于窗口，以居中显示
+                    ResizeQRImg = new Bitmap(ContactImg);
+                    picContactImg.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                }
+
+                picContactImg.Image = ResizeQRImg;
+
+            }
+            catch (IndexOutOfRangeException ioRe)
+            {
+                MessageBox.Show(ioRe.Message, "请选择高一些的 二维码版本");
+               
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "系统提示");
+               
+            }
+        }
+
+        private void btnSaveQRContact_Click(object sender, EventArgs e) //用于保存二维码图片到本地
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();//创建保存对话框 
+            saveFile.Filter = "JPEG|*.jpeg;*.jpg|位图文件|*.bmp|PNG|*.png|所有文件|*.*";//设置保存的图片格式  
+            if ( picContactImg.Image!= null)
+            {
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    string sFilePathName = saveFile.FileName;
+                    Image img = picContactImg.Image;
+                    img.Save(sFilePathName);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先 生成二维码图片", "系统提示");
+            }  
+        }
+        #endregion
+
+
     }
 }

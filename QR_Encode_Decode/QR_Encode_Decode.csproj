@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A9E80A1335D989ED7A77D1FE08D8A6ED6FFCE317</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>553D6BC54C4AF1471D5DC96A93C697B996C4E752</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>
@@ -67,7 +67,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>sndnvaps.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,7 +119,6 @@
     </Compile>
     <None Include="QR_C-Sharp_Test_TemporaryKey.pfx" />
     <None Include="QR_Encode_Decode_TemporaryKey.pfx" />
-    <None Include="sndnvaps.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

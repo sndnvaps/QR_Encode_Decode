@@ -464,8 +464,8 @@ namespace QR_Encode_Decode
                 qrencode = new QRCodeEncoder();
                 qrencode.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE; //选择压缩的方式
                 qrencode.QRCodeScale = 4;
-                qrencode.QRCodeVersion = 14;   //选择QR版本
-                qrencode.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M;  //选择修正率
+                qrencode.QRCodeVersion = 25;   //选择QR版本
+                qrencode.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.H;  //选择修正率,最高比率30%
                 ContactImg = qrencode.Encode(encodestr, en); //生成二维码，并保存到img 类当中
 
                 Bitmap ResizeQRImg;

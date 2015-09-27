@@ -3,7 +3,8 @@
 
 # 依赖动态库: <strong>ThoughtWorks.QRCode.dll </strong>
 
-`编译工具： VS 2013`
+`编译工具： VS 2015`
+
 
 #目前实现功能：
 
@@ -21,3 +22,8 @@
 		
 		
 参考资料:http://www.cnblogs.com/yunfeifei/p/4305943.html
+
+# 更新日志:
+
+	1. 2015-9-27 准备修改界面设计器为 wpf 
+	

@@ -34,8 +34,16 @@ namespace QR_Encode_Decode
             ImageSource ims;
             
             Encoding encode = Encoding.UTF8;
+
+          
+            if (textBox1.Text == string.Empty) //如果没有输入生成二维码的内容，即为抛出异常
+            {
+                throw new Exception("请输入要生成二维码的内容");
+            }
+
             string encodeStr = textBox1.Text.ToString();
-           QRCodeEncoder qrEncode = new QRCodeEncoder();
+
+            QRCodeEncoder qrEncode = new QRCodeEncoder();
             Bitmap2BitmapImage bmp2bmpimg = new Bitmap2BitmapImage();
 
             qrEncode.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;//GetEncodeMode(cbEndoeMode.SelectedItem); //选择压缩的方式
@@ -52,15 +60,17 @@ namespace QR_Encode_Decode
 
         private void GeneraQR_Click(object sender, RoutedEventArgs e) //此用于生成二维码使用
         {
-            ImageSource img;
-             img  = QR_Create();
-            if (img != null )
-            {
+
+            try {
+                ImageSource img;
+                img = QR_Create();
                 image.Source = img;
-            } else
+
+            } 
+            catch (Exception es) //用于捕捉所有出错的异常
             {
-                MessageBox.Show("无法生成二维码");
-            }
+                MessageBox.Show(es.Message.ToString(),"程序异常",MessageBoxButton.OK,MessageBoxImage.Error);
+            }      
 
         }
     }

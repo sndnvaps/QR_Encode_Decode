@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QR_Encode_Decode"
         mc:Ignorable="d"
-        Title="二维码生成-解释-生成名片" Height="528.288" Width="757.86">
-    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,-4,-4" Height="492" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="747">
+        Title="二维码生成-解释-生成名片" Height="610.288" Width="757.86">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,-3,-4,-1" Height="583" VerticalAlignment="Top" HorizontalAlignment="Right" Width="747">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -17,9 +17,25 @@
         </Grid.RenderTransform>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="29" Margin="228,40,0,0" TextWrapping="Wrap" Text="测试内容" VerticalAlignment="Top" Width="460"/>
         <Label x:Name="label" Content="输入要生成的二维码的内容" HorizontalAlignment="Left" Height="30" Margin="26,40,0,0"   VerticalAlignment="Top" Width="182"/>
-        <GroupBox x:Name="groupBox" Header="二维码生成" HorizontalAlignment="Left" Height="235" Margin="52,116,0,0" VerticalAlignment="Top" Width="262"/>
-        <Button x:Name="button" Content="生成二维码" HorizontalAlignment="Left" Height="28" Margin="77,367,0,0" VerticalAlignment="Top" Width="118" Click="GeneraQR_Click"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="170" Margin="77,150,0,0" VerticalAlignment="Top" Width="206"/>
+        <GroupBox x:Name="groupBox" Header="二维码生成" HorizontalAlignment="Left" Height="342" Margin="52,116,0,0" VerticalAlignment="Top" Width="296"/>
+        <Button x:Name="button" Content="生成二维码" HorizontalAlignment="Left" Height="28" Margin="52,497,0,0" VerticalAlignment="Top" Width="118" Click="GeneraQR_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="281" Margin="77,150,0,0" VerticalAlignment="Top" Width="253"/>
+        <GroupBox x:Name="groupBox2" Header="要插入的logo" HorizontalAlignment="Left" Height="341" Margin="379,116,0,0" VerticalAlignment="Top" Width="296" RenderTransformOrigin="0.5,0.5">
+            <GroupBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.164"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.432"/>
+                </TransformGroup>
+            </GroupBox.RenderTransform>
+            <Grid HorizontalAlignment="Left" Height="285" Margin="22,24,0,0" VerticalAlignment="Top" Width="250">
+                <Button x:Name="button1" Content="选择要插入的logo图片" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="145" Click="SelQRLogo_Click"/>
+                <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="178,51,0,0" TextWrapping="Wrap" Text="30" VerticalAlignment="Top" Width="49" RenderTransformOrigin="1.026,0.288"/>
+                <Label x:Name="label1" Content="Logo大小" HorizontalAlignment="Left" Height="28" Margin="81,52,0,0" VerticalAlignment="Top" Width="74"/>
+                <Image x:Name="image1" HorizontalAlignment="Left" Height="179" Margin="28,85,0,0" VerticalAlignment="Top" Width="186"/>
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>

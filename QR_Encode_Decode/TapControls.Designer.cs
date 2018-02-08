@@ -585,6 +585,7 @@
             this.txtContactURL.Name = "txtContactURL";
             this.txtContactURL.Size = new System.Drawing.Size(247, 21);
             this.txtContactURL.TabIndex = 15;
+            this.txtContactURL.TextChanged += new System.EventHandler(this.txtContactURL_TextChanged);
             // 
             // txtContactMailBox
             // 

@@ -435,7 +435,7 @@ namespace QR_Encode_Decode
                                 "ADR:{4}\n" +
                                 "ORG:{5}\n" +
                                 "TITLE:{6}\n" +
-                                "URL:{7}" +
+                                "URL:{7}\n" +
                                 "NOTE:{8}\n" +
                                 "END:VCARD",txtContactName.Text,txtContactMailBox.Text,txtContactTel.Text,txtContactTELCell.Text,
                                 txtContactADD.Text,txtContactORG.Text,txtContactTitle.Text,txtContactURL.Text,txtContactNote.Text);
@@ -556,6 +556,11 @@ namespace QR_Encode_Decode
         }
 
         #endregion
+
+        private void txtContactURL_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
 
     }

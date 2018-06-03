@@ -21,3 +21,6 @@
 		
 		
 参考资料:http://www.cnblogs.com/yunfeifei/p/4305943.html
+
+## License
+#### [MIT](https://sndnvaps.mit-license.org/2015)

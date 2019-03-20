@@ -22,5 +22,10 @@
 		
 参考资料:http://www.cnblogs.com/yunfeifei/p/4305943.html
 
+-----
+Buy me a beer
+
+<a href="https://liberapay.com/sndnvaps/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+
 ## License
 #### [MIT](https://sndnvaps.mit-license.org/2015)

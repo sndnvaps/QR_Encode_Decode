@@ -3,7 +3,9 @@
 
 # 依赖动态库: <strong>ThoughtWorks.QRCode.dll </strong>
 
-`编译工具： VS 2013`
+`编译工具： VS 2017`
+
+ Net Framework v4.6.1
 
 #目前实现功能：
 
